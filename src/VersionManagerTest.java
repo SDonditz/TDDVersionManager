@@ -1,7 +1,4 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,31 +10,37 @@ class VersionManagerTest {
         versionManager = new VersionManager();
     }
 
+    @BeforeEach
+    public void initEach() {
+        versionManager.setVersion(0);
+    }
+
     @Test
     @DisplayName("Test majeur")
     void majeur() {
         versionManager.majeur();
-        assertEquals(versionManager.getVersion() + 100, versionManager.getVersion());
+        assertEquals(100, versionManager.getVersion());
     }
 
     @Test
     @DisplayName("Test mineur")
     void mineur() {
         versionManager.mineur();
-        assertEquals(versionManager.getVersion() + 10, versionManager.getVersion());
+        assertEquals(10, versionManager.getVersion());
     }
 
     @Test
     @DisplayName("Test patch")
     void patch() {
         versionManager.patch();
-        assertEquals(versionManager.getVersion() + 1, versionManager.getVersion());
+        assertEquals(1, versionManager.getVersion());
     }
 
     @Test
     @DisplayName("Test getVersion")
     void getVersion() {
-        assertEquals(0, versionManager.getVersion());
+        versionManager.setVersion(211);
+        assertEquals(211, versionManager.getVersion());
     }
 
     @Test
@@ -45,5 +48,23 @@ class VersionManagerTest {
     void setVersion() {
         versionManager.setVersion(100);
         assertEquals(100, versionManager.getVersion());
+    }
+
+    @Test
+    @DisplayName("Test triple majeur")
+    void tripleMajeur() {
+        versionManager.majeur();
+        versionManager.majeur();
+        versionManager.majeur();
+        assertEquals(300, versionManager.getVersion());
+    }
+
+    @Test
+    @DisplayName("Test majeur+mineur+patch")
+    void trinity() {
+        versionManager.majeur();
+        versionManager.mineur();
+        versionManager.patch();
+        assertEquals(111, versionManager.getVersion());
     }
 }
