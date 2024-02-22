@@ -7,7 +7,7 @@ class VersionManagerTest {
 
     @BeforeAll
     static void setUp() {
-        versionManager = new VersionManager();
+        versionManager = new VersionManager(0);
     }
 
     @BeforeEach
@@ -77,7 +77,8 @@ class VersionManagerTest {
     @Test
     @DisplayName("Test reset")
     void reset() {
-        this.reset();
+        versionManager.setVersion(100);
+        versionManager.reset();
         assertEquals(0, versionManager.getVersion());
     }
 }

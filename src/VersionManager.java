@@ -1,9 +1,11 @@
 public class VersionManager {
 
-    private int version = 0;
-    private int initialVersion = this.version;
+    private int version;
+    private final int initialVersion;
 
-    public VersionManager() {
+    public VersionManager(int version) {
+        this.version = version;
+        this.initialVersion = version;
     }
 
     public void majeur() {
@@ -27,10 +29,10 @@ public class VersionManager {
     }
 
     public int getInitialVersion() {
-        return -1;
+        return this.initialVersion;
     }
 
     public void reset() {
-
+        this.version = this.getInitialVersion();
     }
 }
