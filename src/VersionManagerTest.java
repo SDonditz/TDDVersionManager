@@ -67,4 +67,17 @@ class VersionManagerTest {
         versionManager.patch();
         assertEquals(111, versionManager.getVersion());
     }
+
+    @Test
+    @DisplayName("Test getInitialVersion")
+    void getInitialVersion() {
+        assertEquals(0, versionManager.getInitialVersion());
+    }
+
+    @Test
+    @DisplayName("Test reset")
+    void reset() {
+        this.reset();
+        assertEquals(0, versionManager.getVersion());
+    }
 }

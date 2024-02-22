@@ -1,6 +1,7 @@
 public class VersionManager {
 
     private int version = 0;
+    private int initialVersion = this.version;
 
     public VersionManager() {
     }
@@ -23,5 +24,13 @@ public class VersionManager {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public int getInitialVersion() {
+        return -1;
+    }
+
+    public void reset() {
+
     }
 }
